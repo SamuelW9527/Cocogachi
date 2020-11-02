@@ -83,19 +83,19 @@
                 if(($resultset1[$i-1]['pushid']!=$pushcontent[0]['id'] || ($resultset1[$i-1]['pushid']==$pushcontent[0]['id'] && $resultset1[$i-1]['pushstatus']!=1)) && $time<=3600 && $time>1800)
                 {
                         sc_send("冲蝗提醒-开播前1小时","标题:".$pushcontent[0]['title']."  链接:".$pushcontent[0]['link']."  开播时间:".$pushcontent[0]['date'],$resultset1[$i-1]['sckey']);
-                        $sql = "update scuser set pushid = ".$pushcontent[0]['id'].", lastpush = '".$currentdate."', pushstatus = 1 where id = ".$i;
+                        $sql = "update scuser set pushid = ".$pushcontent[0]['id'].", lastpush = '".$currentdate."', pushstatus = 1 where id = ".$resultset1[$i-1]['id'];
                         mysqli_query($GLOBALS['conn'], $sql);
                 }
                 if(($resultset1[$i-1]['pushid']!=$pushcontent[0]['id'] || ($resultset1[$i-1]['pushid']==$pushcontent[0]['id'] && $resultset1[$i-1]['pushstatus']!=2)) && $time<=1800 && $time>600)
                 {
                     sc_send("冲蝗提醒-开播前半小时","标题:".$pushcontent[0]['title']."  链接:".$pushcontent[0]['link']."  开播时间:".$pushcontent[0]['date'],$resultset1[$i-1]['sckey']);
-                    $sql = "update scuser set pushid = ".$pushcontent[0]['id'].", lastpush = '".$currentdate."', pushstatus = 2 where id = ".$i;
+                    $sql = "update scuser set pushid = ".$pushcontent[0]['id'].", lastpush = '".$currentdate."', pushstatus = 2 where id = ".$resultset1[$i-1]['id'];
                     mysqli_query($GLOBALS['conn'], $sql);
                 }
                 if(($resultset1[$i-1]['pushid']!=$pushcontent[0]['id'] || ($resultset1[$i-1]['pushid']==$pushcontent[0]['id'] && $resultset1[$i-1]['pushstatus']!=3)) && $time<=600 && $time>0)
                 {
                     sc_send("热车提醒-开播前10分钟","请提前预热  标题:".$pushcontent[0]['title']."  链接:".$pushcontent[0]['link']."  开播时间:".$pushcontent[0]['date'],$resultset1[$i-1]['sckey']);
-                    $sql = "update scuser set pushid = ".$pushcontent[0]['id'].", lastpush = '".$currentdate."', pushstatus = 3 where id = ".$i;
+                    $sql = "update scuser set pushid = ".$pushcontent[0]['id'].", lastpush = '".$currentdate."', pushstatus = 3 where id = ".$resultset1[$i-1]['id'];
                     mysqli_query($GLOBALS['conn'], $sql);
                 }
             }
